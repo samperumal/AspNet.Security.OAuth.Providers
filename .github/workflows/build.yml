@@ -1,0 +1,63 @@
+name: build
+
+on:
+  push:
+    branches: [ rel/2.2.* ]
+    tags: [ '2.2.*' ]
+  pull_request:
+    branches: [ rel/2.2.* ]
+
+jobs:
+  build:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ macos-latest, ubuntu-latest, windows-latest ]
+        include:
+          - os: macos-latest
+            os_name: macos
+          - os: ubuntu-latest
+            os_name: linux
+          - os: windows-latest
+            os_name: windows
+
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.2.106
+
+    - name: Build, Test and Package
+      run: build.cmd
+      if: ${{ runner.os == 'Windows' }}
+
+    - name: Build, Test and Package
+      run: ./build.sh
+      if: ${{ runner.os != 'Windows' }}
+
+    - name: Publish logs
+      uses: actions/upload-artifact@v1
+      with:
+        name: logs-${{ matrix.os_name }}
+        path: ./artifacts/logs
+
+    - name: Publish NuGet packages
+      uses: actions/upload-artifact@v1
+      with:
+        name: packages-${{ matrix.os_name }}
+        path: ./artifacts/build
+
+    #- name: Push NuGet packages to aspnet-contrib MyGet
+    #  run: dotnet nuget push "artifacts\build\*.nupkg" --api-key ${{ secrets.MYGET_TOKEN }} --skip-duplicate --source https://www.myget.org/F/aspnet-contrib/ --symbol-source https://www.myget.org/F/aspnet-contrib/
+    #  if: ${{ (github.ref == 'refs/heads/rel/2.2.x' || startsWith(github.ref, 'refs/tags/2.2.')) && runner.os == 'Windows' }}
+
+    #- name: Push NuGet packages to NuGet.org
+    #  run: dotnet nuget push "artifacts\build\*.nupkg" --api-key ${{ secrets.NUGET_TOKEN }} --skip-duplicate --source https://api.nuget.org/v3/index.json
+    #  if: ${{ startsWith(github.ref, 'refs/tags/2.2.') && runner.os == 'Windows' }}

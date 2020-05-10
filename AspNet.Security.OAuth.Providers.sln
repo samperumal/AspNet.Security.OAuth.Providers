@@ -121,7 +121,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		.travis.yml = .travis.yml
 		build.cmd = build.cmd
 		build.ps1 = build.ps1
 		build.sh = build.sh
@@ -168,6 +167,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNet.Security.OAuth.GitLab", "src\AspNet.Security.OAuth.GitLab\AspNet.Security.OAuth.GitLab.csproj", "{FACB1C2F-3BF7-4DD3-958B-E471E69E214A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNet.Security.OAuth.Apple", "src\AspNet.Security.OAuth.Apple\AspNet.Security.OAuth.Apple.csproj", "{DC80AFEC-EFB4-4B21-BF79-44DEA6E1FE26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{F81F4FF5-EE67-4B47-98ED-B97DEF090AAB}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -472,6 +476,7 @@ Global
 		{140A6CAD-FC84-4A09-A939-8A5692DF0C7C} = {BAC7067D-88FE-4385-8AC9-1A325FFBDE69}
 		{FACB1C2F-3BF7-4DD3-958B-E471E69E214A} = {C1352FD3-AE8B-43EE-B45B-F6E0B3FBAC6D}
 		{DC80AFEC-EFB4-4B21-BF79-44DEA6E1FE26} = {C1352FD3-AE8B-43EE-B45B-F6E0B3FBAC6D}
+		{F81F4FF5-EE67-4B47-98ED-B97DEF090AAB} = {3FA3F7B5-5373-4E43-8F45-8EC18249E526}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C7B54DE2-6407-4802-AD9C-CE54BF414C8C}
