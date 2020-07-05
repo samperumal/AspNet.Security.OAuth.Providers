@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>ASP.NET Core security middleware enabling CERN OAuth authentication.</Description>
+    <Authors>Sameshan Perumal;Chino Chang</Authors>
+    <PackageTags>aspnetcore;authentication;CERN;oauth;security</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="JetBrains.Annotations" PrivateAssets="All">
+      <Version>2020.1.0</Version>
+      <NoWarn>NU1701</NoWarn>
+      <NoWarn>NU1604</NoWarn>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
